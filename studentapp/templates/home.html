@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="en-us"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <!-- www.phpied.com/conditional-comments-block-downloads/ -->
+    <!-- Always force latest IE rendering engine
+         (even in intranet) & Chrome Frame
+         Remove this if you use the .htaccess -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--  Mobile Viewport Fix
+          j.mp/mobileviewport & davidbcalhoun.com/2010/viewport-metatag
+          device-width: Occupy full width of the screen in its current orientation
+          initial-scale = 1.0 retains dimensions instead of zooming out if page height > device height
+          user-scalable = yes allows the user to zoom in -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- http://dev.w3.org/html5/markup/meta.name.html -->
+    <meta name="application-name" content="tproject">
+    <!-- Speaking of Google, don't forget to set your site up:
+         http://google.com/webmasters -->
+    <meta name="google-site-verification" content="">
+
+    <!-- footer -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+    </head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"/>
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+
+
+{#{% load static %}#}
+
+
+<style type="text/css">
+
+.footer {
+       /* position: fixed; */
+       left: 0;
+       bottom: 0;
+       width: 100%;
+       background-color: #d9edf7;
+       color: white;
+       text-align: center;
+
+
+       /* margin-bottom: 1px; */
+}
+
+.form-signin
+{
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .form-signin-heading, .form-signin .checkbox
+{
+    margin-bottom: 10px;
+}
+.form-signin .checkbox
+{
+    font-weight: normal;
+}
+.form-signin .form-control
+{
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.form-signin .form-control:focus
+{
+    z-index: 2;
+}
+.form-signin input[type="text"]
+{
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"]
+{
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.account-wall
+{
+    margin-top: 20px;
+    padding: 40px 0px 20px 0px;
+    background-color: #f7f7f7;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.login-title
+{
+    color: #555;
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
+}
+.profile-img
+{
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+.need-help
+{
+    margin-top: 10px;
+}
+.new-account
+{
+    display: block;
+    margin-top: 10px;
+}
+
+.navbar-color {
+    background-color: #d9edf7;
+    height: 60px;
+}
+
+</style>
+
+<body>
+
+
+{% if type == 'home' %}
+<nav class="navbar  navbar-color "  role="navigation">
+  <div class="container" style="width: auto">
+      <h3 align="center">DASHBOARD</h3>
+
+
+
+    </div>
+</nav>
+<h4 align="center">
+    <button><a href="/hr_list/">HR list</a></button>&nbsp&nbsp&nbsp
+    <button><a href="/notification/">Notification</a></button>
+</h4>
+{% endif %}
+
+
+{#hr list#}
+{% if type == 'hr_list' %}
+
+<nav class="0navbar  navbar-color "  role="navigation">
+  <div class="container" style="width: auto">
+      <h3 align="center">DASHBOARD</h3>
+    <h3 align="center">HR list</h3>
+    <table align="center" border="0">
+    <tr>
+        <td align="center">HR names</td>
+
+    </tr>
+        {% for student in students %}
+    <tr>
+
+        <td style="color: green"><br>
+            <button><a href="/hr_datails/?hr_id={{ student.id}}">{{ student.name }}</a></button>
+
+        </td>
+
+    </tr>
+        {% endfor %}
+{#        <tr>#}
+{#        <td style="color: green"><br>#}
+{#            <button><a href="//">shiva</a></button>#}
+{#        </td>#}
+{##}
+{#    </tr>#}
+    </table>
+{% endif %}
+
+
+{#hr details#}
+
+{% if type == 'hr_datails' %}
+<table>
+<h3>HR details</h3>
+
+<tr>
+    <td>HR Name:{{ name }}</td>
+
+        <td>
+            <input type="text" placeholder="message" name="message" style="margin-left: 130px;">
+        </td>
+</tr>
+<tr>
+    <td >
+        Company:{{ address }}</td>
+
+    <td><br>
+        <button style="margin-left: 150px">Request</button></td>
+</tr>
+</table>
+
+{% endif %}
+</div>
+</nav>
+
+
+{#hr list#}
+{% if type == 'notification' %}
+
+<nav class="navbar  navbar-color "  role="navigation">
+  <div class="container" style="width: auto">
+      <h3 align="center">DASHBOARD</h3>
+    <h3 align="center">Notification</h3>
+    <table align="center" border="1">
+    <tr>
+        <td>HR name</td>
+        <td>status</td>
+    </tr>
+    {% for x in student %}
+
+        {% if status == 'ACtive' %}
+        <tr>
+        <td>{{ x.name }}</td>
+        <td><a href="//">{{ x.qualification }}</a></td>
+        </tr>
+
+        {% else %}
+        <tr>
+        <td>{{ x.name }}</td>
+        <td>{{ x.qualification }}</td>
+        </tr>
+        {% endif %}
+
+
+    {% endfor %}
+    </table>
+{% endif %}
+</div>
+</nav>
+
+</body>
+
+
+</html>

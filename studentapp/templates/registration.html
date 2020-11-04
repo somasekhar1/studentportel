@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3 align="center" style="color: green">{{ mesage }}</h3>
+<h3 align="center">Student Registration</h3>
+<form action="/student_register_details/" method="POST">
+    {% csrf_token %}
+<table align="center" border="1">
+    <tr>
+        <td>
+            <input type="text" placeholder="name" name="name" required>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="number" placeholder="Contact Number" name="contact" required>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="date" placeholder="Date Of Birth" name="date_of_birth" required>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="text" placeholder="Qualification" name="qualification" required>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="date" placeholder="Passing year" name="passing_year" required>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="email" placeholder="Email" name="email" required>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="password" placeholder="Password" name="password" required>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <input type="submit" value="Register">
+        </td>
+    </tr>
+</table>
+    </form>
+<h3 align="center" ><a href="/student_login/">Existing student Login</a></h3>
+</body>
+</html>
